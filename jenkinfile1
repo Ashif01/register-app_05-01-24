@@ -14,3 +14,21 @@ pipeline {
         stage("Checkout from SCM"){
                 steps {
                     git branch: 'main', credentialsId: 'Github', url: 'https://github.com/Ashif01/register-app_05-01-24'
+                }
+        }
+
+        stage("Build Application"){
+            steps {
+                sh "mvn clean package"
+            }
+
+       }
+
+       stage("Test Application"){
+           steps {
+                 sh "mvn test"
+           }
+}
+}
+}
+
